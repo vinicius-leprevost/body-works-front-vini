@@ -1,0 +1,16 @@
+<div class="container">
+    <app-menu-lateral></app-menu-lateral>
+    <div class="content">
+        <mat-grid-list cols="3">
+            <mat-grid-tile colspan="1" *ngFor="let equipamento of listaEquipamentos">
+                <app-card-equipamento
+                    [id]="equipamento.id"
+                    [nome]="equipamento.nome"
+                    [tipo]="equipamento.tipo"
+                    (removido)="removeItemListagem($event)">
+                    
+                </app-card-equipamento>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+  </div>

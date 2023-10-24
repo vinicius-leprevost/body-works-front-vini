@@ -1,0 +1,10 @@
+<div class="container">
+    <app-menu-lateral></app-menu-lateral>
+    <div class="content">
+        <div class="listagem">
+            <div *ngFor="let user of listaUsuarios">
+                <app-card-usuario [usuario]="user" (statusChanged)="atualizarStatusPagamento(user.id, user.statusPagamento)"></app-card-usuario>
+            </div>
+        </div>
+    </div>
+</div>

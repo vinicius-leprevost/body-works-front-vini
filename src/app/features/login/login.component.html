@@ -1,0 +1,44 @@
+<mat-grid-list cols="2" rowHeight="100%" gutterSize="-20px">
+    <mat-grid-tile class="divLogo">
+        <img
+            mat-card-image
+            src="../../../assets/logo-com_nome-sem_fundo.png"
+        />
+    </mat-grid-tile>
+    <mat-grid-tile class="divFormulario">
+        <form [formGroup]="formularioLogin" (ngSubmit)="submitFormLogin()" #login="ngForm">
+            <h1 mat-menu-item>
+                <mat-label> {{"login.boasVindas" | translate}} </mat-label>
+            </h1>
+            <p></p>
+            <a mat-menu-item>
+                <mat-label> {{"login.crieConta" | translate}} </mat-label>    
+            <a [routerLink]="['/cadastro']" mat-menu-item>
+                <mat-label> {{"login.cadastrar" | translate}} </mat-label>   
+            </a></a> <!--Como deixar o sublinhado em branco?-->
+            <p></p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"login.email" | translate}} </mat-label>   
+                    <input formControlName="email" type="text" matInput>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"login.senha" | translate}} </mat-label>   
+                    <input formControlName="senha" type="password" matInput>
+                </mat-form-field>
+            </p>
+            
+            <a mat-menu-item>
+                <mat-label> {{"login.esqueceuSenha" | translate}} </mat-label>
+            </a>
+            <p></p>
+            <div>
+                <button class="button" type="submit" mat-raised-button [disabled]="login.form.invalid">
+                    <mat-label> {{"login.entrar" | translate}} </mat-label>
+                </button>
+            </div>
+        </form>
+    </mat-grid-tile>
+</mat-grid-list>

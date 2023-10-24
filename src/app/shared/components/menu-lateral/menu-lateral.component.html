@@ -1,0 +1,33 @@
+<div class="container">
+  <button class="hamburger-btn" (click)="toggleSidebar()">
+    &#9776;
+  </button>
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="/assets/logo-com_nome-sem_fundo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="user-info">
+    <div class="user-name">
+        <p>{{"menu.menuInicio" | translate}}<br>{{nomeUsuario}}</p>
+        <br>
+        <p *ngIf="!adm" > {{"menu.menuStatus" | translate}} <br>{{statusPagamento}}</p>
+        <p *ngIf="adm" > {{"menu.menuLogAdm" | translate}} </p>
+    </div>
+  </div>
+  <button mat-button class="sidebar-item" (click)="navigateToEditCadastro()" *ngIf="!adm && !mostraEditInstrutor" > {{"menu.menuEditar" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaTreinos()" *ngIf="!adm && !mostraEditInstrutor" > {{"menu.menuTreino" | translate}}  </button>
+  <button mat-button class="sidebar-item" (click)="navegaParaEditAdm()" *ngIf="mostraEditInstrutor" > {{"menu.menuEditar" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaCadastroInstrutor()" *ngIf="adm"> {{"menu.menuAddInst" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaCadastroEquipamento()" *ngIf="adm"> {{"menu.menuAddEquip" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaListagemEquipamentos()" *ngIf="adm"> {{"menu.menuListEquip" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaListagemUsuario()" *ngIf="adm"> {{"menu.menuListUsu" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegarParaListagemInstrutores()" *ngIf="adm"> {{"menu.menuListInst" | translate}} </button>
+  <button mat-button class="sidebar-item" (click)="navegaParaCadastroExercicio()" *ngIf="role === 'INSTRUTOR' ">{{"menu.menuCadastroExercicio" | translate}}</button>
+  <button mat-button class="sidebar-item" (click)="navegaParaFichaUsuario()" *ngIf="role === 'INSTRUTOR' ">{{"menu.menuFichaUsuario" | translate}}</button>
+  <button mat-button class="sidebar-item" (click)="navegaParaCadastroFichaTreino()" *ngIf="role === 'INSTRUTOR' ">{{"menu.menuCadastroFicha" | translate}}</button>
+  <div class="logout-container">
+    <button mat-button class="logout-btn" (click)="logout()"> {{"menu.menuSair" | translate}} </button>
+  </div>
+  
+  </div>   
+</div>

@@ -1,0 +1,18 @@
+
+<div class="container">
+    <app-menu-lateral></app-menu-lateral>
+    <div class="content">
+        <mat-grid-list cols="3">
+            <mat-grid-tile colspan="1" *ngFor="let usuarioAcademia of listaInstrutores">
+                <app-card-usuario-academia 
+                    [id]="usuarioAcademia.id"
+                    [nome]="usuarioAcademia.nome" 
+                    [cpf]="usuarioAcademia.cpf" 
+                    [email]="usuarioAcademia.email"
+                    (idRemovido)="removeItemListagem($event)">
+                    
+                </app-card-usuario-academia>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+  </div>

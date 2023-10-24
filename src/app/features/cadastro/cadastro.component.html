@@ -1,0 +1,111 @@
+<mat-grid-list cols="2" gutterSize="-20px" rowHeight="100%">
+    <mat-grid-tile class="divLogo">
+        <img
+            mat-card-image
+            src="../../../assets/logo-com_nome-sem_fundo.png"
+        />
+    </mat-grid-tile>
+    <mat-grid-tile class="divFormulario">
+        <form [formGroup]="formularioUsuario" (ngSubmit)="submitFormUsuario()" #usuario="ngForm">
+            <h1 mat-menu-item>
+                <mat-label> {{"cadastroUsuario.registro" | translate}} </mat-label>
+            </h1>
+            <p></p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.campoNome" | translate}} </mat-label>
+                    <input formControlName="nome" type="text" matInput >
+                </mat-form-field>
+                <mat-error *ngIf="nome.errors && nome.touched">
+                    <mat-label> {{"cadastroUsuario.errorNome" | translate}} </mat-label>
+                </mat-error>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.campoCPF" | translate}} </mat-label>
+                    <input formControlName="cpf" mask="000.000.000-00" type="text" matInput>
+                </mat-form-field>
+                <mat-error *ngIf="cpf.errors && cpf.touched">
+                    <mat-label> {{"cadastroUsuario.errorCPF" | translate}} </mat-label>
+                </mat-error>
+            </p>
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label> {{"cadastroUsuario.dataNascimento" | translate}} </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-error *ngIf="validaDataNascimento.errors && validaDataNascimento.touched">
+                    <mat-label> {{"cadastroUsuario.errorData" | translate}} </mat-label>
+                </mat-error>
+            
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.genero" | translate}} </mat-label>
+                    <mat-select formControlName="genero"> 
+                    <mat-option value = "M" >
+                        <mat-label> {{"cadastroUsuario.masc" | translate}} </mat-label>
+                    </mat-option>
+                    <mat-option value = "F" >
+                        <mat-label> {{"cadastroUsuario.fem" | translate}} </mat-label>
+                    </mat-option>
+                    <mat-option value = "O" >
+                        <mat-label> {{"cadastroUsuario.outro" | translate}} </mat-label>
+                    </mat-option> 
+                    </mat-select> 
+                </mat-form-field>
+
+                <mat-error *ngIf="genero.errors && genero.touched">
+                    <mat-label> {{"cadastroUsuario.errorGenero" | translate}} </mat-label>
+                </mat-error>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.email" | translate}} </mat-label>
+                    <input formControlName="email" type="text" matInput>
+                </mat-form-field>
+                <mat-error *ngIf="email.errors && email.touched">
+                    <mat-label> {{"cadastroUsuario.errorEmail" | translate}} </mat-label>
+                </mat-error>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.senha" | translate}} </mat-label>
+                    <input formControlName="senha" type="password" matInput>
+                </mat-form-field>
+                <mat-error *ngIf="senha.errors && senha.touched">
+                    <mat-label> {{"cadastroUsuario.errorSenha" | translate}} </mat-label>
+                </mat-error>
+            </p>
+            
+            <p>
+                <mat-checkbox formControlName="adm">
+                    <mat-label> {{"cadastroUsuario.adm" | translate}} </mat-label>
+                </mat-checkbox>
+            </p>
+            <p *ngIf="adm.value">
+                <mat-form-field>
+                    <mat-label> {{"cadastroUsuario.codCad" | translate}} </mat-label>
+                    <input formControlName="codigo" type="password" matInput >
+                </mat-form-field>
+            </p>
+            <div>
+            <p></p>
+                <button class="button" type="submit" [disabled]="usuario.form.invalid" mat-raised-button>
+                    <mat-label> {{"cadastroUsuario.cadastrar" | translate}} </mat-label>
+                </button>
+            </div>
+            <p></p>
+            <div>
+            <a mat-menu-item>
+                <mat-label> {{"cadastroUsuario.infosAdc" | translate}} </mat-label>
+            </a>
+            <a [routerLink]="['/login']" mat-menu-item>
+                <mat-label> {{"cadastroUsuario.criarConta" | translate}} </mat-label>
+            </a>
+            </div>
+        </form>
+    </mat-grid-tile>
+</mat-grid-list>
